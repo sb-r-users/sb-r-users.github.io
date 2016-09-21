@@ -3,3 +3,30 @@ title: "My Website"
 ---
 
 Hello, Website!
+
+## Map
+
+```{r}
+library(leaflet)
+
+leaflet() %>% 
+  addTiles() %>%
+  setView(-119.845559, 34.4136876, zoom = 15)
+```
+
+## Table
+
+```{r}
+library(DT)
+datatable(iris)
+```
+
+## Plot
+
+```{r}
+library(plotly)
+m <- loess(unemploy / pop ~ as.numeric(date), data = economics)
+p <- plot_ly(economics, x = date, y = unemploy / pop, name = "raw") 
+add_trace(p, x = date, y = fitted(m), name = "loess")
+```
+
