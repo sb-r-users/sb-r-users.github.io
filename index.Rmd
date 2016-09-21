@@ -1,12 +1,16 @@
 ---
 title: "My Website"
+output:
+  html_document:
+    theme: united
+    highlight: tango
 ---
 
 Hello, Website!
 
 ## Map
 
-```{r}
+```{r, echo=FALSE}
 library(leaflet)
 
 leaflet() %>% 
@@ -17,13 +21,15 @@ leaflet() %>%
 ## Table
 
 ```{r}
+password = readLines('.hidden-password')
+
 library(DT)
 datatable(iris)
 ```
 
 ## Plot
 
-```{r}
+```{r, message=FALSE}
 library(plotly)
 m <- loess(unemploy / pop ~ as.numeric(date), data = economics)
 p <- plot_ly(economics, x = date, y = unemploy / pop, name = "raw") 
